@@ -32,7 +32,6 @@ func (eh *EdgeHub) initial() (err error) {
 		return err
 	}
 
-    Compile Error Test
 	eh.chClient = cloudHubClient
 
 	return nil
