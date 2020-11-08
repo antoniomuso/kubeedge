@@ -24,6 +24,7 @@ var groupMap = map[string]string{
 	"twin":     modules.TwinGroup,
 	"func":     modules.MetaGroup,
 	"user":     modules.BusGroup,
+	"fog":      modules.FogGroup,
 }
 
 func (eh *EdgeHub) initial() (err error) {
@@ -92,6 +93,8 @@ func (eh *EdgeHub) dispatch(message model.Message) error {
 		md = modules.MetaGroup
 	case messagepkg.UserGroupName:
 		md = modules.BusGroup
+	case messagepkg.FogGroupName:
+		md = modules.FogGroup
 	default:
 		klog.Warningf("msg_group not found")
 		return fmt.Errorf("msg_group not found")

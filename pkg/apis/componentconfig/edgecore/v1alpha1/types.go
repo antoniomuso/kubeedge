@@ -104,6 +104,9 @@ type Modules struct {
 	// EdgeStream indicates edgestream module config
 	// +Required
 	EdgeStream *EdgeStream `json:"edgeStream,omitempty"`
+	// FogManager indicates fogManager module config
+	// +Required
+	FogManager *FogManager `json:"fogManager,omitempty"`
 }
 
 // Edged indicates the config fo edged module
@@ -377,6 +380,20 @@ type MetaManager struct {
 	ContextSendModule metaconfig.ModuleName `json:"contextSendModule,omitempty"`
 	// PodStatusSyncInterval indicates pod status sync
 	PodStatusSyncInterval int32 `json:"podStatusSyncInterval,omitempty"`
+}
+
+// FogManager indicates the FogManager module config
+type FogManager struct {
+	// Enable indicates whether FogManager is enabled,
+	// if set to false (for debugging etc.), skip checking other FogManager configs.
+	// default true
+	Enable bool `json:"enable,omitempty"`
+	// ContextSendGroup indicates send group
+	// ContextSendGroup metaconfig.GroupName `json:"contextSendGroup,omitempty"`
+	// ContextSendModule indicates send module
+	// ContextSendModule metaconfig.ModuleName `json:"contextSendModule,omitempty"`
+	// PodStatusSyncInterval indicates pod status sync
+	// PodStatusSyncInterval int32 `json:"podStatusSyncInterval,omitempty"`
 }
 
 // ServiceBus indicates the ServiceBus module config

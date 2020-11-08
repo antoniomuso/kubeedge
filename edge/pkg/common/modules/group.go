@@ -15,4 +15,6 @@ const (
 	UserGroup = "user"
 	// MeshGroup group
 	MeshGroup = "mesh"
+	// FogGroup group
+	FogGroup = "fog"
 )

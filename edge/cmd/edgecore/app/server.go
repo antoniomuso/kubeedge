@@ -21,6 +21,7 @@ import (
 	"github.com/kubeedge/kubeedge/edge/pkg/edged"
 	"github.com/kubeedge/kubeedge/edge/pkg/edgehub"
 	"github.com/kubeedge/kubeedge/edge/pkg/eventbus"
+	"github.com/kubeedge/kubeedge/edge/pkg/fogmanager"
 	"github.com/kubeedge/kubeedge/edge/pkg/metamanager"
 	"github.com/kubeedge/kubeedge/edge/pkg/servicebus"
 	"github.com/kubeedge/kubeedge/edge/test"
@@ -153,6 +154,7 @@ func registerModules(c *v1alpha1.EdgeCoreConfig) {
 	eventbus.Register(c.Modules.EventBus, c.Modules.Edged.HostnameOverride)
 	edgemesh.Register(c.Modules.EdgeMesh)
 	metamanager.Register(c.Modules.MetaManager)
+	fogmanager.Register(c.Modules.FogManager)
 	servicebus.Register(c.Modules.ServiceBus)
 	edgestream.Register(c.Modules.EdgeStream, c.Modules.Edged.HostnameOverride, c.Modules.Edged.NodeIP)
 	test.Register(c.Modules.DBTest)

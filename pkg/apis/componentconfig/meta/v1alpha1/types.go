@@ -37,6 +37,7 @@ const (
 	ModuleNameTwin        ModuleName = "twin"
 	ModuleNameDBTest      ModuleName = "dbTest"
 	ModuleNameEdgeMesh    ModuleName = "edgemesh"
+	ModuleNameFogManager  ModuleName = "fogManager"
 )
 
 // Available modules group
@@ -49,4 +50,5 @@ const (
 	GroupNameEdged          GroupName = "edged"
 	GroupNameUser           GroupName = "user"
 	GroupNameMesh           GroupName = "mesh"
+	GroupNameFog            GroupName = "fog"
 )
