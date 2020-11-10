@@ -132,6 +132,9 @@ func NewDefaultEdgeCoreConfig() *EdgeCoreConfig {
 				ContextSendModule:     metaconfig.ModuleNameEdgeHub,
 				PodStatusSyncInterval: constants.DefaultPodStatusSyncInterval,
 			},
+			FogManager: &FogManager{
+				Enable: true,
+			},
 			ServiceBus: &ServiceBus{
 				Enable: false,
 			},

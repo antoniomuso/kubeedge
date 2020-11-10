@@ -1,5 +1,9 @@
 package fogmanager
 
+import (
+	"github.com/kubeedge/beehive/pkg/core/model"
+)
+
 const (
 	OK = "OK"
 
@@ -14,3 +18,11 @@ const (
 	CloudFunctionModel  = "funcmgr"
 	CloudControlerModel = "edgecontroller"
 )
+
+func (m *fogManager) process(msg model.Message) {
+	// Do something with the message
+}
+
+func (m *fogManager) runFogManager() {
+
+}

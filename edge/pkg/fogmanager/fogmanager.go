@@ -31,9 +31,9 @@ func newFogManager(enable bool) *fogManager {
 // Register register fogmanager
 func Register(fogManager *v1alpha1.FogManager) {
 	// fogmanagerconfig.InitConfigure(fogManager)
-	// fog := newFogManager(fogManager.Enable)
+	fog := newFogManager(fogManager.Enable)
 	// initDBTable(fog)
-	// core.Register(fog)
+	core.Register(fog)
 }
 
 // initDBTable create table
@@ -75,7 +75,7 @@ func (m *fogManager) Start() {
 		}
 	}()
 
-	// m.runFogManager()
+	m.runFogManager()
 }
 
 func getSyncInterval() time.Duration {
