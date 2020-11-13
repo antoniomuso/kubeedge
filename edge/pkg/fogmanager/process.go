@@ -27,7 +27,7 @@ func (m *fogManager) process(msg model.Message) {
 }
 
 func (m *fogManager) assignLabel() {
-	message.
+
 }
 
 func (m *fogManager) runFogManager() {
