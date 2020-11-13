@@ -59,6 +59,7 @@ func (m *fogManager) Enable() bool {
 }
 
 func (m *fogManager) Start() {
+	klog.Infof("Begin to register %v db model", module.Name())
 	go func() {
 		period := getSyncInterval()
 		timer := time.NewTimer(period)
