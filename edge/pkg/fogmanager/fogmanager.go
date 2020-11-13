@@ -80,5 +80,5 @@ func (m *fogManager) Start() {
 
 func getSyncInterval() time.Duration {
 	// TODO: Change time interval
-	return time.Duration(4000)
+	return time.Duration(time.Second * 10)
 }
