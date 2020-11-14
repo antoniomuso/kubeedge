@@ -19,6 +19,9 @@ const (
 	EdgeFunctionModel   = "edgefunction"
 	CloudFunctionModel  = "funcmgr"
 	CloudControlerModel = "edgecontroller"
+
+	// EdgeHubModuleName Where is located enum?
+	// EdgeHubModuleName = "websocket"
 )
 
 func (m *fogManager) process(msg model.Message) {
@@ -27,7 +30,9 @@ func (m *fogManager) process(msg model.Message) {
 }
 
 func (m *fogManager) assignLabel() {
-
+	// msg := model.NewMessage("").BuildRouter(m.Name(), modules.HubGroup, model.ResourceTypeNode, model.UpdateOperation)
+	// msg.FillBody("")
+	// beehiveContext.SendToGroup(modules.HubGroup, *msg)
 }
 
 func (m *fogManager) runFogManager() {
@@ -46,6 +51,7 @@ func (m *fogManager) runFogManager() {
 			} else {
 				klog.Errorf("get a message %+v: %v", msg, err)
 			}
+			m.assignLabel()
 		}
 	}()
 }
