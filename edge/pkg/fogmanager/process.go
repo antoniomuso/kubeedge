@@ -26,7 +26,11 @@ const (
 
 func (m *fogManager) process(msg model.Message) {
 	// Do something with the message
+
 	println(msg.GetSource())
+	println(msg.GetOperation())
+
+	klog.V(2).Infof("Arrived message from %+v to %+v", msg.GetResource(), m.Name())
 }
 
 func (m *fogManager) assignLabel() {
@@ -36,6 +40,7 @@ func (m *fogManager) assignLabel() {
 }
 
 func (m *fogManager) runFogManager() {
+	klog.V(2).Infof("Fog manager Start")
 	go func() {
 		for {
 			select {

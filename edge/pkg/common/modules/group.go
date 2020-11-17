@@ -17,4 +17,6 @@ const (
 	MeshGroup = "mesh"
 	// FogGroup group
 	FogGroup = "fog"
+	// StreamGroup group
+	StreamGroup = "edgestream"
 )
