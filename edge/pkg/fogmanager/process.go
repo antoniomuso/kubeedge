@@ -3,6 +3,7 @@ package fogmanager
 import (
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
+	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
 	"k8s.io/klog"
 )
 
@@ -34,9 +35,9 @@ func (m *fogManager) process(msg model.Message) {
 }
 
 func (m *fogManager) assignLabel() {
-	// msg := model.NewMessage("").BuildRouter(m.Name(), modules.HubGroup, model.ResourceTypeNode, model.UpdateOperation)
-	// msg.FillBody("")
-	// beehiveContext.SendToGroup(modules.HubGroup, *msg)
+	msg := model.NewMessage("").BuildRouter(m.Name(), modules.HubGroup, model.ResourceTypeNode, model.UpdateOperation)
+	msg.FillBody("")
+	beehiveContext.SendToGroup(modules.HubGroup, *msg)
 }
 
 func (m *fogManager) runFogManager() {

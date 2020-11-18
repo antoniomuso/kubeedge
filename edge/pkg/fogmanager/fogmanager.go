@@ -7,7 +7,6 @@ import (
 
 	"github.com/kubeedge/beehive/pkg/core"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
-	"github.com/kubeedge/beehive/pkg/core/model"
 	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
 	fogmanagerconfig "github.com/kubeedge/kubeedge/edge/pkg/fogmanager/config"
 
@@ -70,8 +69,8 @@ func (m *fogManager) Start() {
 				return
 			case <-timer.C:
 				timer.Reset(period)
-				msg := model.NewMessage("").BuildRouter(FogManagerModuleName, GroupResource, model.ResourceTypePodStatus, OperationFogSync)
-				beehiveContext.Send(FogManagerModuleName, *msg)
+				// msg := model.NewMessage("").BuildRouter(FogManagerModuleName, GroupResource, model.ResourceTypePodStatus, OperationFogSync)
+				// beehiveContext.Send(FogManagerModuleName, *msg)
 			}
 		}
 	}()
