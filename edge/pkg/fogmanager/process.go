@@ -31,7 +31,7 @@ func (m *fogManager) process(msg model.Message) {
 	println(msg.GetSource())
 	println(msg.GetOperation())
 
-	// klog.V(2).Infof(" Arrived message from %+v to %+v", msg.GetResource(), m.Name())
+	klog.V(2).Infof(" Arrived message from %+v to %+v", msg.GetResource(), m.Name())
 }
 
 func (m *fogManager) assignLabel() {
