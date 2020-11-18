@@ -31,6 +31,7 @@ func newFogManager(enable bool) *fogManager {
 // Register register fogmanager
 func Register(fogManager *v1alpha1.FogManager) {
 	// fogmanagerconfig.InitConfigure(fogManager)
+	println("Test Test")
 	fog := newFogManager(fogManager.Enable)
 	// initDBTable(fog)
 	core.Register(fog)
@@ -59,7 +60,7 @@ func (m *fogManager) Enable() bool {
 }
 
 func (m *fogManager) Start() {
-	klog.V(2).Infof("Begin to register %v db model", m.Name())
+	klog.Infof("Begin to register %v db model", m.Name())
 	go func() {
 		period := getSyncInterval()
 		timer := time.NewTimer(period)
