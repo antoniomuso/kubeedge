@@ -368,7 +368,7 @@ func installKubeEdge(options types.InstallOptions, arch string, version semver.V
 	//proper download has happened and then only proceed further.
 	//Currently it is missing and once checksum is in place, checksum check required
 	//to be added here.
-	dirname := fmt.Sprintf("kubeedge-v%s-linux-%s", version, arch)
+	// dirname := fmt.Sprintf("kubeedge-v%s-linux-%s", version, arch)
 	filename := fmt.Sprintf("kubeedge-v%s-linux-%s.tar.gz", version, arch)
 	checksumFilename := fmt.Sprintf("checksum_kubeedge-v%s-linux-%s.tar.gz.txt", version, arch)
 	filePath := fmt.Sprintf("%s/%s", options.TarballPath, filename)
@@ -408,12 +408,12 @@ func installKubeEdge(options types.InstallOptions, arch string, version semver.V
 		return nil
 	}
 
-	if err := downloadServiceFile(options.ComponentType, version, KubeEdgePath); err != nil {
-		return fmt.Errorf("fail to download service file,error:{%s}", err.Error())
-	}
+	// if err := downloadServiceFile(options.ComponentType, version, KubeEdgePath); err != nil {
+	// 	return fmt.Errorf("fail to download service file,error:{%s}", err.Error())
+	// }
 
 	// Compatible with 1.0.0
-	var untarFileAndMoveCloudCore, untarFileAndMoveEdgeCore string
+	/* var untarFileAndMoveCloudCore, untarFileAndMoveEdgeCore string
 	if version.GE(semver.MustParse("1.1.0")) {
 		if options.ComponentType == types.CloudCore {
 			untarFileAndMoveCloudCore = fmt.Sprintf("cd %s && tar -C %s -xvzf %s && cp %s/%s/cloud/cloudcore/%s %s/",
@@ -443,7 +443,7 @@ func installKubeEdge(options types.InstallOptions, arch string, version semver.V
 			return err
 		}
 		fmt.Println(stdout)
-	}
+	} */
 	return nil
 }
 
