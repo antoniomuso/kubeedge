@@ -9,6 +9,7 @@ import (
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
 	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
+	fogmanagerconfig "github.com/kubeedge/kubeedge/edge/pkg/fogmanager/config"
 
 	// fogmanagerconfig "github.com/kubeedge/kubeedge/edge/pkg/fogmanager/config"
 	// "github.com/kubeedge/kubeedge/edge/pkg/fogmanager/dao"
@@ -30,8 +31,7 @@ func newFogManager(enable bool) *fogManager {
 
 // Register register fogmanager
 func Register(fogManager *v1alpha1.FogManager) {
-	// fogmanagerconfig.InitConfigure(fogManager)
-	println("Test Test")
+	fogmanagerconfig.InitConfigure(fogManager)
 	fog := newFogManager(fogManager.Enable)
 	// initDBTable(fog)
 	core.Register(fog)
@@ -60,7 +60,6 @@ func (m *fogManager) Enable() bool {
 }
 
 func (m *fogManager) Start() {
-	klog.Infof("Begin to register %v db model", m.Name())
 	go func() {
 		period := getSyncInterval()
 		timer := time.NewTimer(period)
