@@ -1,9 +1,12 @@
 package fogmanager
 
 import (
+	"encoding/json"
+
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
 	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
+	v1 "k8s.io/api/core/v1"
 	"k8s.io/klog"
 )
 
@@ -35,13 +38,23 @@ func (m *fogManager) process(msg model.Message) {
 }
 
 func (m *fogManager) assignLabel() {
+	node := &v1.Node{}
+	node.APIVersion = "v1"
+	node.ObjectMeta.Name = "edge-node"
+	node.ObjectMeta.Labels["fog-colony-name"] = "home"
+
 	msg := model.NewMessage("").BuildRouter(m.Name(), modules.HubGroup, model.ResourceTypeNode, model.UpdateOperation)
-	msg.FillBody("")
+	content, ok := json.Marshal(node)
+	if ok != nil {
+		klog.Errorf("Marhing error")
+	}
+	msg.Content = content
 	beehiveContext.SendToGroup(modules.HubGroup, *msg)
 }
 
 func (m *fogManager) runFogManager() {
 	klog.Infof("Fog manager Start")
+	m.assignLabel()
 	go func() {
 		for {
 			select {
@@ -57,7 +70,7 @@ func (m *fogManager) runFogManager() {
 			} else {
 				klog.Errorf("get a message %+v: %v", msg, err)
 			}
-			m.assignLabel()
+
 		}
 	}()
 }
