@@ -40,6 +40,7 @@ func (m *fogManager) process(msg model.Message) {
 func (m *fogManager) assignLabel() {
 	node := &v1.Node{}
 	node.APIVersion = "v1"
+	node.Kind = "Node"
 	node.ObjectMeta.Name = "edge-node"
 	node.ObjectMeta.Labels = make(map[string]string)
 	node.ObjectMeta.Labels["fog-colony-name"] = "home"
