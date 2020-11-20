@@ -36,6 +36,7 @@ import (
 	"k8s.io/client-go/discovery"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
+	"k8s.io/klog"
 
 	types "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
 	"github.com/kubeedge/kubeedge/pkg/apis/componentconfig/edgecore/v1alpha1"
@@ -368,7 +369,7 @@ func installKubeEdge(options types.InstallOptions, arch string, version semver.V
 	//Currently it is missing and once checksum is in place, checksum check required
 	//to be added here.
 	// dirname := fmt.Sprintf("kubeedge-v%s-linux-%s", version, arch)
-	/* filename := fmt.Sprintf("kubeedge-v%s-linux-%s.tar.gz", version, arch)
+	filename := fmt.Sprintf("kubeedge-v%s-linux-%s.tar.gz", version, arch)
 	checksumFilename := fmt.Sprintf("checksum_kubeedge-v%s-linux-%s.tar.gz.txt", version, arch)
 	filePath := fmt.Sprintf("%s/%s", options.TarballPath, filename)
 	if _, err = os.Stat(filePath); err == nil {
@@ -405,7 +406,7 @@ func installKubeEdge(options types.InstallOptions, arch string, version semver.V
 			return err
 		}
 		return nil
-	} */
+	}
 
 	// if err := downloadServiceFile(options.ComponentType, version, KubeEdgePath); err != nil {
 	// 	return fmt.Errorf("fail to download service file,error:{%s}", err.Error())
