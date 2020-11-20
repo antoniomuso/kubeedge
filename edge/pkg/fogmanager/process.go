@@ -41,6 +41,7 @@ func (m *fogManager) assignLabel() {
 	node := &v1.Node{}
 	node.APIVersion = "v1"
 	node.ObjectMeta.Name = "edge-node"
+	node.ObjectMeta.Labels = make(map[string]string)
 	node.ObjectMeta.Labels["fog-colony-name"] = "home"
 
 	msg := model.NewMessage("").BuildRouter(m.Name(), modules.HubGroup, model.ResourceTypeNode, model.UpdateOperation)
