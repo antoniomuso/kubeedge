@@ -1,8 +1,6 @@
 package fogmanager
 
 import (
-	"encoding/json"
-
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
 	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
@@ -47,11 +45,7 @@ func (m *fogManager) assignLabel() {
 	node.ObjectMeta.Labels["fog-colony-name"] = "home"
 
 	msg := model.NewMessage("").BuildRouter(m.Name(), modules.HubGroup, model.ResourceTypeNode, model.UpdateOperation)
-	content, ok := json.Marshal(node)
-	if ok != nil {
-		klog.Errorf("Marhing error")
-	}
-	msg.Content = content
+	msg.Content = node
 	beehiveContext.SendToGroup(modules.HubGroup, *msg)
 }
 
