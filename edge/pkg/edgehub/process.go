@@ -175,7 +175,9 @@ func (eh *EdgeHub) routeToCloud() {
 			time.Sleep(time.Second)
 			continue
 		}
-
+		if message.Router.Source == modules.FogGroup {
+			println(message.Router.Source)
+		}
 		// post message to cloud hub
 		err = eh.sendToCloud(message)
 		if err != nil {
