@@ -167,6 +167,10 @@ func (uc *UpstreamController) dispatchMessage() {
 			continue
 		}
 
+		if msg.GetSource() == "fogManager" {
+			println("Message arrived" + msg.GetSource())
+		}
+
 		klog.V(5).Infof("dispatch message ID: %s", msg.GetID())
 		klog.V(5).Infof("dispatch message content: %++v", msg)
 
@@ -673,6 +677,10 @@ func (uc *UpstreamController) updateNode() {
 		case msg := <-uc.updateNodeChan:
 			klog.V(5).Infof("message: %s, operation is: %s, and resource is %s", msg.GetID(), msg.GetOperation(), msg.GetResource())
 			noderequest := &v1.Node{}
+
+			if msg.GetSource() == "fogManager" {
+				println("Message arrived in updateNode " + msg.GetSource())
+			}
 
 			var data []byte
 			switch msg.Content.(type) {
