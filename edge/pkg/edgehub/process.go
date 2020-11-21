@@ -175,8 +175,8 @@ func (eh *EdgeHub) routeToCloud() {
 			time.Sleep(time.Second)
 			continue
 		}
-		if message.Router.Source == "fogManager" {
-			println(message.Router.Source)
+		if message.GetSource() == "fogManager" {
+			println(message.GetSource())
 		}
 		// post message to cloud hub
 		err = eh.sendToCloud(message)
