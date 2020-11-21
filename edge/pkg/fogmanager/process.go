@@ -23,7 +23,7 @@ const (
 	CloudControlerModel = "edgecontroller"
 
 	// EdgeHubModuleName Where is located enum?
-	// EdgeHubModuleName = "websocket"
+	EdgeHubModuleName = "websocket"
 )
 
 func (m *fogManager) process(msg model.Message) {
@@ -46,7 +46,7 @@ func (m *fogManager) assignLabel() {
 
 	msg := model.NewMessage("").BuildRouter(m.Name(), modules.HubGroup, model.ResourceTypeNode, model.UpdateOperation)
 	msg.Content = node
-	beehiveContext.SendToGroup(modules.HubGroup, *msg)
+	beehiveContext.Send(EdgeHubModuleName, *msg)
 }
 
 func (m *fogManager) runFogManager() {
