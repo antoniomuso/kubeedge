@@ -134,6 +134,10 @@ func (mh *MessageHandle) HandleServer(container *mux.MessageContainer, writer mu
 		return
 	}
 
+	if container.Message.GetSource() == "fogManager" {
+		println("Message From fogManager arrived.")
+	}
+	
 	err := mh.PubToController(&model.HubInfo{ProjectID: projectID, NodeID: nodeID}, container.Message)
 	if err != nil {
 		// if err, we should stop node, write data to edgehub, stop nodify
